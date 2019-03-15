@@ -1,0 +1,19 @@
+<div class="jumbotron" >
+	<h3>{{app}}</h3>
+  <table ng-show="toDoList.length > 0" class="table table-dark table-striped">
+	<tr>
+		<th></th>
+		<th><a href="" ng-click="ordenarPor('nome')">Item</a></th>
+		<th>Date</th>
+		<th>Status</th>
+	</tr>
+	<tr ng-class="{'selected bold': item.selected}" ng-repeat="item in toDoList | filter:filterSearch | orderBy:criterioDeOrdenacao:direcaoDaOrdenacao">
+		<td><input type="checkbox" ng-model="item.selected"/></td>
+		<td>{{item.name}}</td>
+		<td>{{item.data | date:'dd/MM/yyyy HH:mm'}}</td>
+		<td>{{item.status.name}}</td>
+	</tr>
+</table>
+  <a class="btn btn-primary btn-lg pull-right" href="#" role="button">Learn more</a>
+
+</div>
