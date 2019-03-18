@@ -1,29 +1,12 @@
-<div class="jumbotron" >
-	<h3>{{app}}</h3>
-  <table ng-show="toDoList.length > 0" class="table table-dark table-striped table-hover">
-	<tr>
-		<th></th>
-		<th><a href="" >Item</a></th>
-		<th>Date</th>
-		<th>Status</th>
-	</tr>
-	<tr ng-class="{'selected': item.selectedValue}" ng-repeat="item in toDoList | filter:filterSearch ">
-		<td><input type="checkbox" ng-model="item.selectedValue"/></td>
-		<td>{{item.name | UpperDesc }}</td>
-		<td>{{item.date | date:'dd/MM/yyyy HH:mm'}}</td>
-		<td>
-		<select class="form-control" ng-model="item.status.id" ng-options="statusItem.id as statusItem.name for statusItem in status" ng-change="change(item.id, item.status)">
-			<option value="">------------</option>
-		</select>
-	</td>
-	</tr>
-</table>
 
-<div class="text-right">
-  	<a class="btn btn-primary btn-lg " href="#/new" role="button">New Task</a>
-  	<button class="btn btn-danger btn-lg" ng-click="delTask(toDoList)" ng-if="hasSelected(toDoList)">Delete</button>
-</div>
+<content-body>
+	<list-table></list-table>
+	<div class="text-right">
+	  	<a class="btn btn-primary btn-lg " href="#/new" role="button">New Task</a>
+	  	<button class="btn btn-danger btn-lg" ng-click="delTask(toDoList)" ng-if="hasSelected(toDoList)">Delete</button>
+	</div>
+</content-body>
+
+
   
-
-</div>
 

@@ -3,9 +3,7 @@
 	<form name="taskForm" >
 		<input class="form-control" type="text" ng-model="task.name" name="task" placeholder="Name" ng-required="true" ng-minlength="10"/>
 		<input class="form-control" type="date" ng-model="task.date" name="date" placeholder="Date"/>
-		<select class="form-control" ng-model="task.status" ng-options="statusItem.name for statusItem in status | orderBy:'name'">
-			<option value="">---------------</option>
-		</select>
+		<select-option></select-option>
 	</form>
 	<div ng-show="taskForm.task.$dirty" ng-messages="taskForm.task.$error">
 		<div ng-message="required" class="alert alert-danger">

@@ -30,6 +30,7 @@ app.directive('searchIsolate', function () {
 app.directive('inputFind', function () {
   return {
     restrict: 'E',
+    require: '^?searchIsolate',
     template: '<input class="form-control mr-sm-2" type="search" placeholder="What you search?" aria-label="Search" ng-model="paramsSearch" >',
     scope: {}
   }
@@ -39,6 +40,32 @@ app.directive('buttonFind', function () {
   return {
     restict: 'E',
     scope: {},
+    require: '^?searchIsolate',
     template: '<button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="filterSearch = paramsSearch" >Search</button>'
+  }
+});
+
+
+app.directive('contentBody', function () {
+  return {
+    restrict: 'E',
+    transclude:true,
+    template: '<div class="jumbotron" ng-transclude></div>'
+  }
+});
+
+app.directive('listTable', function () {
+  return {
+    restrict: 'E',
+    templateUrl:'view/tableList.html'
+    
+  }
+});
+
+app.directive('selectOption', function () {
+  return {
+    restrict: 'E',
+    templateUrl:'view/selectOptions.html'
+    
   }
 });
