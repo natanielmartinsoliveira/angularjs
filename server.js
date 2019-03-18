@@ -14,9 +14,9 @@ var status = [
 ];
 
 var todoList = [
-  {id: 1, name: "Create Layout",  data: new Date(), status: status[1]},
-  {id: 2, name: "Create Crud",  data: new Date(), status: status[2] },
-  {id: 3, name: "Modify to modules",  data: new Date(), status: status[4]}
+  {id: 1, name: "Create Layout",  date: new Date(), status: status[1]},
+  {id: 2, name: "Create Crud",  date: new Date(), status: status[2] },
+  {id: 3, name: "Modify to modules",  date: new Date(), status: status[4]}
 ];
 
 app.use(morgan("dev"));
@@ -45,6 +45,26 @@ app.get('/list/:id', function(req, res) {
   	}
   });
   res.status(404).end();
+});
+
+app.delete('/list/:id', function(req, res) {
+  var todoListRemoved = todoList.filter(function(item) {
+    return item.id != req.params.id;
+  });
+  res.json(todoListRemoved);
+  return;
+});
+
+app.put('/list/:id', function(req, res) {
+  for (var item in todoList) {
+     if (todoList[item].id == req.params.id) {
+        console.log(req.body.id);
+        todoList[item].status = status[status.findIndex( x => x.id == req.body.id )];
+        break; //Stop this loop, we found it!
+     }
+   }
+  res.json(todoList);
+  return;
 });
 
 app.post('/list', function(req, res) {
