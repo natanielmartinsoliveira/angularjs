@@ -2,8 +2,8 @@
 <content-body>
 	<list-table></list-table>
 	<div class="text-right">
-	  	<a class="btn btn-primary btn-lg " href="#/new" role="button">New Task</a>
-	  	<button class="btn btn-danger btn-lg" ng-click="delTask(toDoList)" ng-if="hasSelected(toDoList)">Delete</button>
+	  	<button-action color-button='primary' link-redirect="new" other-class='btn-lg'>New Task</button-action>
+	  	<button-action color-button='danger' click-func='delTask(toDoList)' other-class='btn-lg' ng-if='hasSelected(toDoList)'>Delete</button-action>
 	</div>
 </content-body>
 

@@ -4,6 +4,7 @@ app.controller("todoListAngularCtrl", function ($scope, toDoList, listServices, 
 	$scope.status = status.data;
 
 	$scope.addTask = function (item) {
+		console.log(item);
 		listServices.saveItem(item).success(function (data) {
 			delete $scope.task;
 			$scope.taskForm.$setPristine();
@@ -20,6 +21,7 @@ app.controller("todoListAngularCtrl", function ($scope, toDoList, listServices, 
 			}	
 		});
 	};
+
 	$scope.change = function (item, status) {
 		listServices.putItem(item, status).success(function (data) {
 			$location.path("/");

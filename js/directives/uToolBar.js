@@ -22,8 +22,7 @@ app.directive('menuList', function () {
 app.directive('searchIsolate', function () {
   return {
     restrict: 'E',
-    template: '<form class="form-inline my-2 my-lg-0"><input-find></input-find><button-find></button-find></form>',
-    scope: {}
+    template: '<form class="form-inline my-2 my-lg-0"><input-find></input-find><button-find></button-find></form>'
   }
 });
 
@@ -31,17 +30,15 @@ app.directive('inputFind', function () {
   return {
     restrict: 'E',
     require: '^?searchIsolate',
-    template: '<input class="form-control mr-sm-2" type="search" placeholder="What you search?" aria-label="Search" ng-model="paramsSearch" >',
-    scope: {}
+    template: '<input class="form-control mr-sm-2" type="search" placeholder="What you search?" aria-label="Search" ng-model="paramsSearch" >'
   }
 })
 
 app.directive('buttonFind', function () {
   return {
     restict: 'E',
-    scope: {},
     require: '^?searchIsolate',
-    template: '<button class="btn btn-outline-success my-2 my-sm-0" type="submit" ng-click="filterSearch = paramsSearch" >Search</button>'
+    template: "<button-action color-button='outline-success' ng-click='filterSearch = paramsSearch' other-class='my-2 my-sm-0' >Search</button-action>" 
   }
 });
 
@@ -65,7 +62,41 @@ app.directive('listTable', function () {
 app.directive('selectOption', function () {
   return {
     restrict: 'E',
-    templateUrl:'view/selectOptions.html'
-    
+    templateUrl:'view/selectOptions.html',
+    scope:{
+      inner:'=',
+      data:'=',
+      databyid:'='
+    },
+    link: function(scope, element, attributes, controller){
+      element.bind('change', function (e) {
+        scope.$eval(attributes.anotherFunc); 
+      });
+    }   
+
+  }
+});
+
+app.directive('buttonAction', function () {
+  return {
+    restrict: 'E',
+    scope:{
+      colorButton:'@',
+      otherClass:'@', 
+      linkRedirect:'@'
+    },
+    controller: ['$scope', '$http', '$location', function($scope, $http, $location) {
+      $scope.linkButton = function (link) {
+        $location.path(link);
+        $scope.$apply()
+      }
+    }],
+    link: function(scope, element, attr, controller) {
+      element.bind('click', function (e) {
+        scope.linkButton(attr.linkRedirect);
+      });
+    },
+    transclude : true,
+    template:'<button class="btn btn-{{ colorButton }} {{ otherClass }}" ng-transclude></button>'    
   }
 });

@@ -68,6 +68,7 @@ app.put('/list/:id', function(req, res) {
 });
 
 app.post('/list', function(req, res) {
+  req.body.status = status[status.findIndex( x => x.id == req.body.status )];
   todoList.push(req.body);
   res.json(true);
 });

@@ -1,5 +1,4 @@
-<select class="form-control" ng-model="item.status.id" 
-ng-options="statusItem.id as statusItem.name for statusItem in status" 
-ng-change="change(item.id, item.status)">
+<select class="form-control" ng-model="inner" 
+ng-options="statusItem.id as statusItem.name for statusItem in data" >
 	<option value="">------------</option>
 </select>

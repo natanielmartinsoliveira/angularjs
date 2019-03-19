@@ -3,7 +3,7 @@
 	<form name="taskForm" >
 		<input class="form-control" type="text" ng-model="task.name" name="task" placeholder="Name" ng-required="true" ng-minlength="10"/>
 		<input class="form-control" type="date" ng-model="task.date" name="date" placeholder="Date"/>
-		<select-option></select-option>
+		<select-option inner="task.status" data='status' ></select-option>
 	</form>
 	<div ng-show="taskForm.task.$dirty" ng-messages="taskForm.task.$error">
 		<div ng-message="required" class="alert alert-danger">
@@ -13,5 +13,5 @@
 			Complete a description longer than 10 characters
 		</div>
 	</div>
-	<button class="btn btn-primary btn-block" ng-click="addTask(task)" ng-disabled="taskForm.$invalid">Add Task</button>
+	<button-action color-button='primary' ng-click="addTask(task)" other-class='btn-lg btn-block' ng-disabled="taskForm.$invalid">New Task</button-action>
 </div>
