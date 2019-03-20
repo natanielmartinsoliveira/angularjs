@@ -3,7 +3,7 @@
 	<list-table></list-table>
 	<div class="text-right">
 	  	<button-action color-button='primary' link-redirect="new" other-class='btn-lg'>New Task</button-action>
-	  	<button-action color-button='danger' click-func='delTask(toDoList)' other-class='btn-lg' ng-if='hasSelected(toDoList)'>Delete</button-action>
+	  	<button-action color-button='danger' ng-click='delTask(toDoList)' other-class='btn-lg' ng-if='hasSelected(toDoList)'>Delete</button-action>
 	</div>
 </content-body>
 
